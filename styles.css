@@ -5,11 +5,8 @@
 }
 
 body {
-    background: linear-gradient(
-        #0f2027,
-        #203a43,
-        #2c5364
-    );
+    background-color: black;
+    color: white;
     height: 100vh;
     font-family: 'Lato', sans-serif;
     border: solid 15px #fff;
@@ -19,7 +16,7 @@ body {
     flex-direction: column;
 }
 
-#start {
+#reset {
     background: none;
     color: #fff;
     font-size: 50px;
@@ -38,7 +35,7 @@ body {
     margin: 25px;
 }
 
-#scoreDisplay, #currentScore {
+#display, #score {
     display:flex;
     justify-content: space-between;
     color: #fff;

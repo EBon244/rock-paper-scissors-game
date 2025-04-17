@@ -1,90 +1,75 @@
-/* TODO Come back at a later point when more knowledge is acquired and re-work this code
-*/
+// Dom Elements
+const score = document.querySelector("#score");
+const display = document.querySelector("#display");
+const rockBtn = document.querySelector("#rock");
+const paperBtn = document.querySelector("#paper");
+const scissorsBtn = document.querySelector("#scissors");
+const resetBtn = document.querySelector("#reset");
 
-
-
-console.log("Hello World!")
-
-let userScore = 0;
+// Initial Game State
+let humanScore = 0;
 let computerScore = 0;
-let startGame = document.getElementById("start");
-let scoreDisplay = document.getElementById("scoreDisplay"); // displays winner of recent round played
-let currentScore = document.getElementById("currentScore"); // displays running scoring so far
-const buttons = document.querySelectorAll("button");
+let gameOver = false;
+const MAX_SCORE = 5;
+display.textContent = "Play Game?";
+updateScoreDisplay();
 
-buttons.forEach((button) => { // button function to choose option for each round
-    button.addEventListener("click", () => {
+// Event listeners
+rockBtn.addEventListener("click", () => playGame("Rock"));
+paperBtn.addEventListener("click", () => playGame("Paper"));
+scissorsBtn.addEventListener("click", () => playGame("Scissors"));
+resetBtn.addEventListener("click", resetGame);
 
-        if (button.id.includes("rock")) {
-            console.log(scoreDisplay.textContent = playRound("Rock"));
-            game();
-        } else if (button.id.includes("paper")) {
-            console.log(scoreDisplay.textContent = playRound("Paper"));
-            game();
-        } else if (button.id.includes("scissors")) {
-            console.log(scoreDisplay.textContent = playRound("Scissors"));
-            game();
-        } else { 
-            userScore = 0;
-            computerScore = 0;
-            displayScore();
-        }
-
-    });
-});
+// Game Functions
 
 function getComputerChoice() {
-    const choices = ["Rock", "Paper", "Scissors"];
-    const random = choices[Math.floor(Math.random() * choices.length)];
-    return random;
+  const choices = ["Rock", "Paper", "Scissors"];
+  return choices[Math.floor(Math.random() * choices.length)];
 }
 
-// function getPlayerChoice(){
-//     let playerChoice = prompt();
-//     return playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1);
-// }
+function updateScoreDisplay() {
+  score.textContent = `Game score: Human: ${humanScore} Computer: ${computerScore}`;
+}
 
-function playRound(choice) {
+function playRound(humanChoice, computerChoice) {
+  if (humanChoice === computerChoice) {
+    return (display.textContent = "Draw!");
+  } else if (
+    (humanChoice === "Rock" && computerChoice === "Scissors") ||
+    (humanChoice === "Paper" && computerChoice === "Rock") ||
+    (humanChoice === "Scissors" && computerChoice === "Paper")
+  ) {
+    humanScore++;
+    return (display.textContent = `You Win! ${humanChoice} beats ${computerChoice}.`);
+  } else {
+    computerScore++;
+    return (display.textContent = `You lose! ${computerChoice} beats ${humanChoice}`);
+  }
+}
 
-    const playerSelection = choice;
-    const computerSelection = getComputerChoice();
+function playGame(humanChoice) {
+  if (gameOver) return;
 
-    if (playerSelection == computerSelection) {
-        return "Tie Game!";
+  computerChoice = getComputerChoice();
+  playRound(humanChoice, computerChoice);
+  updateScoreDisplay();
 
-    } else if ((playerSelection == "Rock" && computerSelection == "Scissors")
-        || (playerSelection == "Paper" && computerSelection == "Rock")
-        || (playerSelection == "Scissors" && computerSelection == "Paper")) {
-        userScore++; // attempt to return score? 
-        return "You Win! " + playerSelection + " beats " + computerSelection + ".";
+  if (humanScore === MAX_SCORE || computerScore === MAX_SCORE) {
+    gameOver = true;
 
+    if (humanScore === MAX_SCORE) {
+      display.textContent = `You Win! :)`;
     } else {
-        computerScore++;
-        return "You Lose! " + computerSelection + " beats " + playerSelection + ".";
-
+      display.textContent = `You Lose! :(`;
     }
-
+    score.textContent = `Final Score: Human: ${humanScore} Computer: ${computerScore}`;
+  }
 }
 
-function displayScore() {
-    currentScore.textContent = "Current score is: User = " + userScore + " Computer = " + computerScore;
-    
-}
-
-function game() {
-
-    if (userScore < 5 && computerScore < 5) {
-        displayScore();
-    } else {
-        endGame();
-    }
-}
-
-
-function endGame() {
-    if (userScore > computerScore) {
-        console.log(currentScore.textContent = "You Win! :) Final Score: User = 5 Computer = " + computerScore);
-    } else {
-        console.log(currentScore.textContent = "You Lose! :( Final Score: User = " + userScore + " Computer = 5");
-    }
+function resetGame() {
+  gameOver = false;
+  humanScore = 0;
+  computerScore = 0;
+  display.textContent = "Play Game?";
+  updateScoreDisplay();
 }
