@@ -16,13 +16,10 @@ body {
     flex-direction: column;
 }
 
-#reset {
-    background: none;
+#display, #score {
     color: #fff;
     font-size: 50px;
-    padding: 10px;
-    border: solid #fff 5px;
-    border-radius: 20px;
+    margin-bottom: 10px;
 }
 
 #rock, #paper, #scissors{
@@ -33,12 +30,20 @@ body {
     border: solid #fff 5px;
     border-radius: 20px;
     margin: 25px;
+    cursor: pointer;
 }
 
-#display, #score {
-    display:flex;
-    justify-content: space-between;
+.choice img{
+    width: 225px;
+    height: auto;
+}
+
+#reset {
+    background: red;
     color: #fff;
     font-size: 50px;
-    margin-bottom: 10px;
+    padding: 10px;
+    border: solid #fff 5px;
+    border-radius: 20px;
+    cursor: pointer;
 }
