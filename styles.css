@@ -10,7 +10,6 @@ body {
     height: 100vh;
     font-family: 'Lato', sans-serif;
     border: solid 15px #fff;
-    
 }
 
 .header {
@@ -38,8 +37,9 @@ main {
 #display,
 #score {
     color: #fff;
-    font-size: 50px;
-    margin-bottom: 10px;
+    font-size: 40px;
+    margin-bottom: 20px 0;
+    text-align: center;
 }
 
 .choice {
@@ -56,6 +56,11 @@ main {
 .choice img {
     width: 150px;
     height: auto;
+    transition: transform .2s ease;
+}
+
+.choice:hover img {
+    transform: scale(1.1);
 }
 
 button.choice:hover {

@@ -11,7 +11,7 @@ let humanScore = 0;
 let computerScore = 0;
 let gameOver = false;
 const MAX_SCORE = 5;
-display.textContent = "Play Game?";
+display.textContent = "First to 5 Wins!";
 updateScoreDisplay();
 
 // Event listeners
@@ -70,6 +70,6 @@ function resetGame() {
   gameOver = false;
   humanScore = 0;
   computerScore = 0;
-  display.textContent = "Play Game?";
+  display.textContent = "First to 5 Wins!";
   updateScoreDisplay();
 }
