@@ -10,23 +10,29 @@
 </head>
 
 <body>
-    <!-- Display -->
-    <div id="display"></div>
-    <div id="score"></div>
-    <!-- Buttons -->
-    <div class="container">
-        <button class="choice" id="rock">
-            <img src="icons/rock-emoji.png" alt="rock">
-        </button>
-        <button class="choice" id="paper">
-            <img src="icons/paper-emoji.png" alt="paper">
-        </button>
-        <button class="choice" id="scissors">
-            <img src="icons/scissors-emoji.png" alt="scissors">
-        </button>
-    </div>
+    <header class="header">
+        <h1 class="title">Rock Paper Scissors</h1>
+    </header>
 
-    <button id="reset">Reset</button>
+    <!-- Display -->
+    <main>
+        <div id="display"></div>
+        <div id="score"></div>
+        <!-- Buttons -->
+        <div class="container">
+            <button class="choice" id="rock">
+                <img src="icons/rock-emoji.png" alt="rock">
+            </button>
+            <button class="choice" id="paper">
+                <img src="icons/paper-emoji.png" alt="paper">
+            </button>
+            <button class="choice" id="scissors">
+                <img src="icons/scissors-emoji.png" alt="scissors">
+            </button>
+        </div>
+
+        <button id="reset">Reset</button>
+    </main>
 
     <script src="game-script.js"></script>
 </body>

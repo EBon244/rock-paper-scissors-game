@@ -5,37 +5,61 @@
 }
 
 body {
-    background-color: black;
+    background-color: #222;
     color: white;
     height: 100vh;
     font-family: 'Lato', sans-serif;
     border: solid 15px #fff;
+    
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    padding: 40px 0px;
+    background-color: var(--header);
+}
+
+.title {
+    font-size: 50px;
+    font-weight: bold;
+    color: yellow;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+main {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-top: 20px;
 }
 
-#display, #score {
+#display,
+#score {
     color: #fff;
     font-size: 50px;
     margin-bottom: 10px;
 }
 
-#rock, #paper, #scissors{
+.choice {
     background: none;
     color: #fff;
     font-size: 50px;
-    padding: 10px;
+    padding: 25px;
     border: solid #fff 5px;
-    border-radius: 20px;
+    border-radius: 50%;
     margin: 25px;
     cursor: pointer;
 }
 
-.choice img{
-    width: 225px;
+.choice img {
+    width: 150px;
     height: auto;
+}
+
+button.choice:hover {
+    background-color: rgba(91, 95, 104, .6);
 }
 
 #reset {
@@ -45,5 +69,10 @@ body {
     padding: 10px;
     border: solid #fff 5px;
     border-radius: 20px;
+    margin-top: 40px;
     cursor: pointer;
+}
+
+#reset:hover {
+    background: rgba(255, 0, 0, .6);
 }
